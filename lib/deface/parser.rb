@@ -78,8 +78,9 @@ module Deface
 
       if source =~ /<html.*?(?:(?!>)[\s\S])*>/
         Nokogiri::HTML::Document.parse(source)
-      elsif source =~ /<body.*?(?:(?!>)[\s\S])*>/
-        Nokogiri::HTML::Document.parse(source).css('body').first
+      #Commented so that the body tag get parsed as a DocumentFragment
+        #elsif source =~ /<body.*?(?:(?!>)[\s\S])*>/
+      #  Nokogiri::HTML::Document.parse(source).css('body').first
       else
         Nokogiri::HTML::DocumentFragment.parse(source)
       end
